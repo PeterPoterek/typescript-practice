@@ -13,14 +13,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // 3, 5, 3, 4: You discard the 3 and sum 5 + 3 + 4 = 12, which you assign to wisdom.
 // 6, 6, 6, 6: You discard the 6 and sum 6 + 6 + 6 = 18, which you assign to charisma.
 // Because constitution is 3, the constitution modifier is -4 and the hitpoints are 6.
-var handleStatGeneration = function () {
-    //   return ;
+var throwDice = function () {
     var diceThrows = [];
     for (var i = 1; i <= 4; i++) {
-        var diceThrow = Math.floor(Math.random() * 7);
+        var diceThrow = Math.floor(Math.random() * 6) + 1;
         diceThrows.push(diceThrow);
     }
-    console.log(diceThrows);
+    return diceThrows;
+};
+var handleStatGeneration = function () {
+    var str = throwDice();
+    var dex = throwDice();
+    var int = throwDice();
+    console.log("str rolls : ".concat(str));
+    console.log("dex rolls : ".concat(dex));
+    console.log("int rolls : ".concat(int));
     return 0;
 };
 var stat = handleStatGeneration();

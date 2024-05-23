@@ -17,15 +17,25 @@
 // 6, 6, 6, 6: You discard the 6 and sum 6 + 6 + 6 = 18, which you assign to charisma.
 // Because constitution is 3, the constitution modifier is -4 and the hitpoints are 6.
 
-const handleStatGeneration = (): number => {
+const throwDice = (): number[] => {
   const diceThrows: number[] = [];
 
   for (let i = 1; i <= 4; i++) {
-    const diceThrow = Math.floor(Math.random() * 7);
+    const diceThrow = Math.floor(Math.random() * 6) + 1;
     diceThrows.push(diceThrow);
   }
 
-  console.log(diceThrows);
+  return diceThrows;
+};
+
+const handleStatGeneration = (): number => {
+  const str = throwDice();
+  const dex = throwDice();
+  const int = throwDice();
+
+  console.log(`str rolls : ${str}`);
+  console.log(`dex rolls : ${dex}`);
+  console.log(`int rolls : ${int}`);
 
   return 0;
 };

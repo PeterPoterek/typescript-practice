@@ -33,8 +33,6 @@ const handleStatGeneration = (): number => {
 
   const min = Math.min(...diceThrows);
 
-  // console.log(`dice throws - ${diceThrows}, lowest value is : ${min}`);
-
   let removedAlread = false;
   const diceThrowsFiltered: number[] = [];
 
@@ -46,20 +44,27 @@ const handleStatGeneration = (): number => {
     }
   }
 
-  // console.log(`filtered dice throws - ${diceThrowsFiltered}`);
-
   const sum = diceThrowsFiltered.reduce((sum, curr) => sum + curr);
 
   return sum;
 };
 
 class Character {
-  strength = handleStatGeneration();
-  dexterity = handleStatGeneration();
-  constitution = handleStatGeneration();
-  intelligence = handleStatGeneration();
-  wisdom = handleStatGeneration();
-  charisma = handleStatGeneration();
+  strength: number;
+  dexterity: number;
+  constitution: number;
+  intelligence: number;
+  wisdom: number;
+  charisma: number;
+
+  constructor() {
+    this.strength = handleStatGeneration();
+    this.dexterity = handleStatGeneration();
+    this.constitution = handleStatGeneration();
+    this.intelligence = handleStatGeneration();
+    this.wisdom = handleStatGeneration();
+    this.charisma = handleStatGeneration();
+  }
 }
 
 const char1 = new Character();

@@ -24,7 +24,6 @@ var throwDice = function () {
 var handleStatGeneration = function () {
     var diceThrows = throwDice();
     var min = Math.min.apply(Math, diceThrows);
-    // console.log(`dice throws - ${diceThrows}, lowest value is : ${min}`);
     var removedAlread = false;
     var diceThrowsFiltered = [];
     for (var i = 0; i < diceThrows.length; i++) {
@@ -35,7 +34,6 @@ var handleStatGeneration = function () {
             diceThrowsFiltered.push(diceThrows[i]);
         }
     }
-    // console.log(`filtered dice throws - ${diceThrowsFiltered}`);
     var sum = diceThrowsFiltered.reduce(function (sum, curr) { return sum + curr; });
     return sum;
 };

@@ -29,13 +29,26 @@ const throwDice = (): number[] => {
 };
 
 const handleStatGeneration = (): number => {
-  const str = throwDice();
-  const dex = throwDice();
-  const int = throwDice();
+  const diceThrows = throwDice();
 
-  console.log(`str rolls : ${str}`);
-  console.log(`dex rolls : ${dex}`);
-  console.log(`int rolls : ${int}`);
+  const min = Math.min(...diceThrows);
+
+  console.log(`dice throws - ${diceThrows}, lowest value is : ${min}`);
+
+  let stat: number;
+
+  let removedAlread = false;
+  const diceThrowsFiltered: number[] = [];
+
+  for (let i = 0; i < diceThrows.length; i++) {
+    if (diceThrows[i] === min && !removedAlread) {
+      removedAlread = true;
+    } else {
+      diceThrowsFiltered.push(diceThrows[i]);
+    }
+  }
+
+  console.log(`filtered dice throws - ${diceThrowsFiltered}`);
 
   return 0;
 };

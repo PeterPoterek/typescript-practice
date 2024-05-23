@@ -22,12 +22,21 @@ var throwDice = function () {
     return diceThrows;
 };
 var handleStatGeneration = function () {
-    var str = throwDice();
-    var dex = throwDice();
-    var int = throwDice();
-    console.log("str rolls : ".concat(str));
-    console.log("dex rolls : ".concat(dex));
-    console.log("int rolls : ".concat(int));
+    var diceThrows = throwDice();
+    var min = Math.min.apply(Math, diceThrows);
+    console.log("dice throws - ".concat(diceThrows, ", lowest value is : ").concat(min));
+    var stat;
+    var removedAlread = false;
+    var diceThrowsFiltered = [];
+    for (var i = 0; i < diceThrows.length; i++) {
+        if (diceThrows[i] === min && !removedAlread) {
+            removedAlread = true;
+        }
+        else {
+            diceThrowsFiltered.push(diceThrows[i]);
+        }
+    }
+    console.log("filtered dice throws - ".concat(diceThrowsFiltered));
     return 0;
 };
 var stat = handleStatGeneration();

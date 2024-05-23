@@ -33,9 +33,7 @@ const handleStatGeneration = (): number => {
 
   const min = Math.min(...diceThrows);
 
-  console.log(`dice throws - ${diceThrows}, lowest value is : ${min}`);
-
-  let stat: number;
+  // console.log(`dice throws - ${diceThrows}, lowest value is : ${min}`);
 
   let removedAlread = false;
   const diceThrowsFiltered: number[] = [];
@@ -48,11 +46,26 @@ const handleStatGeneration = (): number => {
     }
   }
 
-  console.log(`filtered dice throws - ${diceThrowsFiltered}`);
+  // console.log(`filtered dice throws - ${diceThrowsFiltered}`);
 
-  return 0;
+  const sum = diceThrowsFiltered.reduce((sum, curr) => sum + curr);
+
+  return sum;
 };
 
-const stat = handleStatGeneration();
+class Character {
+  strength = handleStatGeneration();
+  dexterity = handleStatGeneration();
+  constitution = handleStatGeneration();
+  intelligence = handleStatGeneration();
+  wisdom = handleStatGeneration();
+  charisma = handleStatGeneration();
+}
+
+const char1 = new Character();
+const char2 = new Character();
+
+console.log(char1);
+console.log(char2);
 
 export {};

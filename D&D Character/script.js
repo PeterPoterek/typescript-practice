@@ -24,8 +24,7 @@ var throwDice = function () {
 var handleStatGeneration = function () {
     var diceThrows = throwDice();
     var min = Math.min.apply(Math, diceThrows);
-    console.log("dice throws - ".concat(diceThrows, ", lowest value is : ").concat(min));
-    var stat;
+    // console.log(`dice throws - ${diceThrows}, lowest value is : ${min}`);
     var removedAlread = false;
     var diceThrowsFiltered = [];
     for (var i = 0; i < diceThrows.length; i++) {
@@ -36,7 +35,22 @@ var handleStatGeneration = function () {
             diceThrowsFiltered.push(diceThrows[i]);
         }
     }
-    console.log("filtered dice throws - ".concat(diceThrowsFiltered));
-    return 0;
+    // console.log(`filtered dice throws - ${diceThrowsFiltered}`);
+    var sum = diceThrowsFiltered.reduce(function (sum, curr) { return sum + curr; });
+    return sum;
 };
-var stat = handleStatGeneration();
+var Character = /** @class */ (function () {
+    function Character() {
+        this.strength = handleStatGeneration();
+        this.dexterity = handleStatGeneration();
+        this.constitution = handleStatGeneration();
+        this.intelligence = handleStatGeneration();
+        this.wisdom = handleStatGeneration();
+        this.charisma = handleStatGeneration();
+    }
+    return Character;
+}());
+var char1 = new Character();
+var char2 = new Character();
+console.log(char1);
+console.log(char2);
